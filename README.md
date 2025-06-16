@@ -58,7 +58,7 @@ Gitリポジトリをクローンして使用する場合：
 
 ```bash
 # リポジトリをクローン
-git clone https://github.com/[your-username]/mermaid-parser-mcp.git
+git clone https://github.com/taiki-ssss/mermaid-parser-mcp.git
 cd mermaid-parser-mcp
 npm install
 npm run build
