@@ -13,7 +13,7 @@ Mermaidクラスダイアグラムのテキスト記法を構造化されたJSON
 ## 2. 機能要件
 
 ### 2.1 主要機能
-**MCPツール名**: `class_diagram`
+**MCPツール名**: `class diagram`
 
 **機能概要**: MermaidクラスダイアグラムテキストをJSONオブジェクトにパースする
 

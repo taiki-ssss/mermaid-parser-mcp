@@ -1,13 +1,13 @@
 #!/usr/bin/env node
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
-import { createStdioServer } from "../features/server/index.js";
+import { createMermaidServer } from "../features/server/index.js";
 
-const server = createStdioServer();
+const server = createMermaidServer();
 
 async function startStdioServer() {
   const transport = new StdioServerTransport();
   await server.connect(transport);
-  console.error("MCP Server running on stdio");
+  console.error("Mermaid Parser MCP Server running on stdio");
 }
 
 startStdioServer().catch((error) => {
