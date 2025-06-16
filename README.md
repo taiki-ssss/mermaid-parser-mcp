@@ -18,6 +18,11 @@ Mermaidダイアグラムのテキストを解析し、構造化されたJSON形
   - クラス名、属性（名前、型、可視性）、メソッド（名前、可視性）を抽出
   - クラス間の関係性（継承、コンポジション、集約など）を識別
 
+- **ER図 (erDiagram)**: エンティティ関係図を解析
+  - エンティティ名、属性（名前、型、制約）を抽出
+  - エンティティ間のリレーションシップとカーディナリティを識別
+  - 主キー(PK)、外部キー(FK)、ユニークキー(UK)の制約を認識
+
 #### 返却値
 
 解析結果をJSON形式で返却します。エラーが発生した場合は、エラーメッセージを含むレスポンスを返します。
@@ -158,6 +163,127 @@ classDiagram
       "from": "Animal",
       "to": "Fish",
       "type": "inheritance"
+    }
+  ]
+}
+```
+
+### ER図 (Entity Relationship Diagram)
+
+ER図はデータベース設計における、エンティティ間の関係性を表現するダイアグラムです。
+
+#### サポートしている要素
+
+- **エンティティ定義**: エンティティ名と属性
+- **属性の型**: string, int, float, boolean, date, timestamp, json, array など
+- **制約**: PK (主キー), FK (外部キー), UK (ユニークキー)
+- **カーディナリティ**:
+  - `||--o{`: 1対多 (one to many)
+  - `||--||`: 1対1 (one to one)
+  - `}o--o{`: 多対多 (many to many)
+  - `||--o|`: 1対0または1 (one to zero or one)
+
+### 入力例
+
+```mermaid
+erDiagram
+    CUSTOMER ||--o{ ORDER : places
+    CUSTOMER {
+        string name
+        string custNumber
+        string sector
+    }
+    ORDER ||--|{ LINE-ITEM : contains
+    ORDER {
+        int orderNumber PK
+        string deliveryAddress
+    }
+    LINE-ITEM {
+        string productCode
+        int quantity
+        float pricePerUnit
+    }
+```
+
+### 出力例
+
+```json
+{
+  "entities": [
+    {
+      "name": "CUSTOMER",
+      "attributes": [
+        {
+          "name": "name",
+          "type": "string",
+          "constraints": []
+        },
+        {
+          "name": "custNumber",
+          "type": "string",
+          "constraints": []
+        },
+        {
+          "name": "sector",
+          "type": "string",
+          "constraints": []
+        }
+      ]
+    },
+    {
+      "name": "ORDER",
+      "attributes": [
+        {
+          "name": "orderNumber",
+          "type": "int",
+          "constraints": ["PK"]
+        },
+        {
+          "name": "deliveryAddress",
+          "type": "string",
+          "constraints": []
+        }
+      ]
+    },
+    {
+      "name": "LINE-ITEM",
+      "attributes": [
+        {
+          "name": "productCode",
+          "type": "string",
+          "constraints": []
+        },
+        {
+          "name": "quantity",
+          "type": "int",
+          "constraints": []
+        },
+        {
+          "name": "pricePerUnit",
+          "type": "float",
+          "constraints": []
+        }
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "from": "CUSTOMER",
+      "to": "ORDER",
+      "type": "places",
+      "cardinality": {
+        "from": "one",
+        "to": "many"
+      }
+    },
+    {
+      "from": "ORDER",
+      "to": "LINE-ITEM",
+      "type": "contains",
+      "cardinality": {
+        "from": "one",
+        "to": "many"
+      }
     }
   ]
 }
