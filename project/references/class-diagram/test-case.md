@@ -1,6 +1,6 @@
 # テストケース
 
-## ケース1
+## テストケース1
 入力：
 
 ```
@@ -36,101 +36,105 @@ classDiagram
 
 ```json
 {
-    "classes": [
+  "classes": [
+    {
+      "name": "Animal",
+      "members": [
         {
-            "name": "Animal",
-            "attributes": [
-                {
-                    "visibility": "public",
-                    "type": "int",
-                    "name": "age"
-                },
-                {
-                    "visibility": "public",
-                    "type": "String",
-                    "name": "gender"
-                }
-            ],
-            "methods": [
-                {
-                    "visibility": "public",
-                    "name": "isMammal",
-                },
-                {
-                    "visibility": "public",
-                    "name": "mate",
-                },
-            ]
+          "name": "age",
+          "type": "property",
+          "visibility": "public",
+          "dataType": "int"
         },
         {
-            "name": "Duck",
-            "attributes": [
-                {
-                    "visibility": "public",
-                    "type": "String",
-                    "name": "breakColor"
-                }
-            ],
-            "methods": [
-                {
-                    "visibility": "public",
-                    "name": "swim",
-                },
-                {
-                    "visibility": "public",
-                    "name": "quack",
-                }
-            ],
-            "relation": {
-                "from": "Duck",
-                "to": "Animal",
-                "relationType": "inheritance"
-            }
+          "name": "gender",
+          "type": "property",
+          "visibility": "public",
+          "dataType": "String"
         },
         {
-            "name": "Fish",
-            "attributes": [
-                {
-                    "visibility": "private",
-                    "type": "int",
-                    "name": "sizeInFeet"
-                }
-            ],
-            "methods": [
-                {
-                    "visibility": "private",
-                    "name": "canEat",
-                }
-            ],
-            "relation": {
-                "from": "Fish",
-                "to": "Animal",
-                "relationType": "inheritance"
-            }
+          "name": "isMammal",
+          "type": "method",
+          "visibility": "public"
         },
         {
-            "name": "Zebra",
-            "genericType": "",
-            "attributes": [
-                {
-                    "visibility": "public",
-                    "type": "bool",
-                    "name": "is_wild"
-                }
-            ],
-            "methods": [
-                {
-                    "visibility": "public",
-                    "name": "run",
-                }
-            ],
-            "relation": {
-                "from": "Zebra",
-                "to": "Animal",
-                "relationType": "inheritance"
-            }
+          "name": "mate",
+          "type": "method",
+          "visibility": "public"
         }
-    ]
+      ]
+    },
+    {
+      "name": "Duck",
+      "members": [
+        {
+          "name": "beakColor",
+          "type": "property",
+          "visibility": "public",
+          "dataType": "String"
+        },
+        {
+          "name": "swim",
+          "type": "method",
+          "visibility": "public"
+        },
+        {
+          "name": "quack",
+          "type": "method",
+          "visibility": "public"
+        }
+      ]
+    },
+    {
+      "name": "Fish",
+      "members": [
+        {
+          "name": "sizeInFeet",
+          "type": "property",
+          "visibility": "private",
+          "dataType": "int"
+        },
+        {
+          "name": "canEat",
+          "type": "method",
+          "visibility": "private"
+        }
+      ]
+    },
+    {
+      "name": "Zebra",
+      "members": [
+        {
+          "name": "is_wild",
+          "type": "property",
+          "visibility": "public",
+          "dataType": "bool"
+        },
+        {
+          "name": "run",
+          "type": "method",
+          "visibility": "public"
+        }
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "from": "Animal",
+      "to": "Duck",
+      "type": "inheritance"
+    },
+    {
+      "from": "Animal",
+      "to": "Fish",
+      "type": "inheritance"
+    },
+    {
+      "from": "Animal",
+      "to": "Zebra",
+      "type": "inheritance"
+    }
+  ]
 }
 ```
 
@@ -154,43 +158,46 @@ classDiagram
 
 ```json
 {
-    "classes": [
+  "classes": [
+    {
+      "name": "BankAccount",
+      "members": [
         {
-            "name": "BankAccount",
-            "attributes": [
-                {
-                    "visibility": "public",
-                    "type": "String",
-                    "name": "owner"
-                },
-                {
-                    "visibility": "public",
-                    "type": "Bigdecimal",
-                    "name": "balance"
-                }
-            ],
-            "methods": [
-                {
-                    "visibility": "public",
-                    "name": "deposit",
-                    "parameters": [
-                        {
-                            "name": "amount"
-                        }
-                    ]
-                },
-                {
-                    "visibility": "public",
-                    "name": "withdrawal",
-                    "parameters": [
-                        {
-                            "name": "amount"
-                        }
-                    ]
-                }
-            ]
+          "name": "owner",
+          "type": "property",
+          "visibility": "public",
+          "dataType": "String"
+        },
+        {
+          "name": "balance",
+          "type": "property",
+          "visibility": "public",
+          "dataType": "Bigdecimal"
+        },
+        {
+          "name": "deposit",
+          "type": "method",
+          "visibility": "public",
+          "parameters": [
+            {
+              "name": "amount"
+            }
+          ]
+        },
+        {
+          "name": "withdrawal",
+          "type": "method",
+          "visibility": "public",
+          "parameters": [
+            {
+              "name": "amount"
+            }
+          ]
         }
-    ]
+      ]
+    }
+  ],
+  "relationships": []
 }
 ```
 
@@ -213,43 +220,46 @@ class BankAccount{
 
 ```json
 {
-    "classes": [
+  "classes": [
+    {
+      "name": "BankAccount",
+      "members": [
         {
-            "name": "BankAccount",
-            "attributes": [
-                {
-                    "visibility": "public",
-                    "type": "String",
-                    "name": "owner"
-                },
-                {
-                    "visibility": "public",
-                    "type": "Bigdecimal",
-                    "name": "balance"
-                }
-            ],
-            "methods": [
-                {
-                    "visibility": "public",
-                    "name": "deposit",
-                    "parameters": [
-                        {
-                            "name": "amount"
-                        }
-                    ]
-                },
-                {
-                    "visibility": "public",
-                    "name": "withdrawal",
-                    "parameters": [
-                        {
-                            "name": "amount"
-                        }
-                    ]
-                }
-            ]
+          "name": "owner",
+          "type": "property",
+          "visibility": "public",
+          "dataType": "String"
+        },
+        {
+          "name": "balance",
+          "type": "property",
+          "visibility": "public",
+          "dataType": "BigDecimal"
+        },
+        {
+          "name": "deposit",
+          "type": "method",
+          "visibility": "public",
+          "parameters": [
+            {
+              "name": "amount"
+            }
+          ]
+        },
+        {
+          "name": "withdrawal",
+          "type": "method",
+          "visibility": "public",
+          "parameters": [
+            {
+              "name": "amount"
+            }
+          ]
         }
-    ]
+      ]
+    }
+  ],
+  "relationships": []
 }
 ```
 
@@ -271,45 +281,48 @@ class BankAccount{
 
 ```json
 {
-    "classes": [
+  "classes": [
+    {
+      "name": "BankAccount",
+      "members": [
         {
-            "name": "BankAccount",
-            "attributes": [
-                {
-                    "visibility": "public",
-                    "type": "String",
-                    "name": "owner"
-                },
-                {
-                    "visibility": "public",
-                    "type": "Bigdecimal",
-                    "name": "balance"
-                }
-            ],
-            "methods": [
-                {
-                    "visibility": "public",
-                    "name": "deposit",
-                    "parameters": [
-                        {
-                            "name": "amount"
-                        }
-                    ],
-                    "returnType": "bool"
-                },
-                {
-                    "visibility": "public",
-                    "name": "withdrawal",
-                    "parameters": [
-                        {
-                            "name": "amount"
-                        }
-                    ],
-                    "returnType": "int"
-                }
-            ]
+          "name": "owner",
+          "type": "property",
+          "visibility": "public",
+          "dataType": "String"
+        },
+        {
+          "name": "balance",
+          "type": "property",
+          "visibility": "public",
+          "dataType": "BigDecimal"
+        },
+        {
+          "name": "deposit",
+          "type": "method",
+          "visibility": "public",
+          "parameters": [
+            {
+              "name": "amount"
+            }
+          ],
+          "returnType": "bool"
+        },
+        {
+          "name": "withdrawal",
+          "type": "method",
+          "visibility": "public",
+          "parameters": [
+            {
+              "name": "amount"
+            }
+          ],
+          "returnType": "int"
         }
-    ]
+      ]
+    }
+  ],
+  "relationships": []
 }
 ```
 
@@ -337,63 +350,73 @@ Square : +getDistanceMatrix() List~List~int~~
 
 ```json
 {
-     "classes": [
+  "classes": [
+    {
+      "name": "Square",
+      "members": [
         {
-            "name": "Square",
-            "genericType": "Shape",
-            "attributes": [
-                {
-                    "type": "int",
-                    "name": "id"
-                },
-                {
-                    "type": "List<int>",
-                    "name": "position"
-                },
-                {
-                    "visibility": "private",
-                    "type": "List<string>",
-                    "name": "messages"
-                }
-            ],
-            "methods": [
-                {
-                    "name": "setPoints",
-                    "parameters": [
-                        {
-                            "type": "List<int>",
-                            "name": "points"
-                        }
-                    ]
-                },
-                {
-                    "name": "getPoints",
-                    "parameters": [],
-                    "returnType": "List<int>"
-                },
-                {
-                    "visibility": "public",
-                    "name": "setMessages",
-                    "parameters": [
-                        {
-                            "type": "List<string>",
-                            "name": "messages"
-                        }
-                    ]
-                },
-                {
-                    "visibility": "public",
-                    "name": "getMessages",
-                    "returnType": "List<string>"
-                },
-                {
-                    "visibility": "public",
-                    "name": "getDistanceMatrix",
-                    "returnType": "List<List<int>>"
-                }
-            ]
+          "name": "id",
+          "type": "property",
+          "visibility": "public",
+          "dataType": "int"
+        },
+        {
+          "name": "position",
+          "type": "property",
+          "visibility": "public",
+          "dataType": "List<int>"
+        },
+        {
+          "name": "setPoints",
+          "type": "method",
+          "visibility": "public",
+          "parameters": [
+            {
+              "name": "points",
+              "type": "List<int>"
+            }
+          ]
+        },
+        {
+          "name": "getPoints",
+          "type": "method",
+          "visibility": "public",
+          "returnType": "List<int>"
+        },
+        {
+          "name": "messages",
+          "type": "property",
+          "visibility": "private",
+          "dataType": "List<string>"
+        },
+        {
+          "name": "setMessages",
+          "type": "method",
+          "visibility": "public",
+          "parameters": [
+            {
+              "name": "messages",
+              "type": "List<string>"
+            }
+          ]
+        },
+        {
+          "name": "getMessages",
+          "type": "method",
+          "visibility": "public",
+          "returnType": "List<string>"
+        },
+        {
+          "name": "getDistanceMatrix",
+          "type": "method",
+          "visibility": "public",
+          "returnType": "List<List<int>>"
         }
-     ]
+      ],
+      "genericType": "Shape"
+    }
+  ],
+  "relationships": []
 }
 ```
 
@@ -416,26 +439,39 @@ namespace BaseShapes {
 
 ```json
 {
-    "classes": [
+  "classes": [
+    {
+      "name": "Triangle",
+      "members": []
+    },
+    {
+      "name": "Rectangle",
+      "members": [
         {
-            "namespace": "BaseShapes",
-            "name": "Triangle"
+          "name": "width",
+          "type": "property",
+          "visibility": "public",
+          "dataType": "double"
         },
         {
-            "namespace": "BaseShapes",
-            "name": "Rectangle",
-            "attributes": [
-                {
-                    "type": "double",
-                    "name": "width"
-                },
-                {
-                    "type": "double",
-                    "name": "height"
-                }
-            ]
+          "name": "height",
+          "type": "property",
+          "visibility": "public",
+          "dataType": "double"
         }
-    ]
+      ]
+    }
+  ],
+  "relationships": [],
+  "namespaces": [
+    {
+      "name": "BaseShapes",
+      "classes": [
+        "Triangle",
+        "Rectangle"
+      ]
+    }
+  ]
 }
 ```
 
@@ -464,42 +500,59 @@ class Color{
 
 ```json
 {
-    "classes": [
+  "classes": [
+    {
+      "name": "Shape",
+      "annotations": [
+        "interface"
+      ],
+      "members": [
         {
-            "name": "Shape",
-            "annotation": "interface",
-            "attributes": [
-                {
-                    "name": "noOfVertices"
-                }
-            ],
-            "methods": [
-                {
-                    "name": "draw"
-                }
-            ]
+          "name": "noOfVertices",
+          "type": "property",
+          "visibility": "public"
         },
         {
-            "name": "Color",
-            "annotation": "enumeration",
-            "attributes": [
-                {
-                    "name": "RED"
-                },
-                {
-                    "name": "BLUE"
-                },
-                {
-                    "name": "GREEN"
-                },
-                {
-                    "name": "WHITE"
-                },
-                {
-                    "name": "BLACK"
-                }
-            ]
+          "name": "draw",
+          "type": "method",
+          "visibility": "public"
         }
-    ]
+      ]
+    },
+    {
+      "name": "Color",
+      "annotations": [
+        "enumeration"
+      ],
+      "members": [
+        {
+          "name": "RED",
+          "type": "property",
+          "visibility": "public"
+        },
+        {
+          "name": "BLUE",
+          "type": "property",
+          "visibility": "public"
+        },
+        {
+          "name": "GREEN",
+          "type": "property",
+          "visibility": "public"
+        },
+        {
+          "name": "WHITE",
+          "type": "property",
+          "visibility": "public"
+        },
+        {
+          "name": "BLACK",
+          "type": "property",
+          "visibility": "public"
+        }
+      ]
+    }
+  ],
+  "relationships": []
 }
 ```
