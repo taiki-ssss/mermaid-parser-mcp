@@ -48,7 +48,7 @@ GitHubリポジトリから直接インストールする場合：
   "mcpServers": {
     "mermaid-parser-mcp": {
       "command": "npx",
-      "args": ["-y", "git+https://github.com/[your-username]/mermaid-parser-mcp"]
+      "args": ["-y", "git+https://github.com/taiki-ssss/mermaid-parser-mcp"]
     }
   }
 }
