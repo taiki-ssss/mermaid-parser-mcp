@@ -111,33 +111,54 @@ classDiagram
 
 ```json
 {
-  "type": "classDiagram",
   "classes": [
     {
       "name": "Animal",
-      "attributes": [
-        { "name": "age", "type": "int", "visibility": "+" },
-        { "name": "gender", "type": "String", "visibility": "+" }
-      ],
-      "methods": [
-        { "name": "isMammal", "visibility": "+" },
-        { "name": "mate", "visibility": "+" }
+      "members": [
+        {
+          "name": "age",
+          "type": "property",
+          "visibility": "public",
+          "dataType": "int"
+        },
+        {
+          "name": "gender",
+          "type": "property",
+          "visibility": "public",
+          "dataType": "String"
+        },
+        {
+          "name": "isMammal",
+          "type": "method",
+          "visibility": "public"
+        },
+        {
+          "name": "mate",
+          "type": "method",
+          "visibility": "public"
+        }
       ]
     },
     {
       "name": "Duck",
-      "attributes": [],
-      "methods": []
+      "members": []
     },
     {
       "name": "Fish",
-      "attributes": [],
-      "methods": []
+      "members": []
     }
   ],
   "relationships": [
-    { "from": "Duck", "to": "Animal", "type": "inheritance" },
-    { "from": "Fish", "to": "Animal", "type": "inheritance" }
+    {
+      "from": "Animal",
+      "to": "Duck",
+      "type": "inheritance"
+    },
+    {
+      "from": "Animal",
+      "to": "Fish",
+      "type": "inheritance"
+    }
   ]
 }
 ```
